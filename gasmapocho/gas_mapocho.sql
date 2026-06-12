@@ -1,19 +1,16 @@
 CREATE DATABASE IF NOT EXISTS bd_gasmapocho;
 USE bd_gasmapocho;
 
--- =============================================
 -- TABLA: roles
--- =============================================
 INSERT INTO roles (nombre_rol) VALUES
 ('ADMINISTRADOR'),
 ('JEFE_ALMACEN'),
 ('ASISTENTE'),
 ('AUDITOR');
 
--- =============================================
+
 -- TABLA: usuarios
 -- Password de todos: admin123
--- =============================================
 INSERT INTO usuarios (nombre, email, password, id_rol, activo) VALUES
 ('Admin Principal',    'admin@mapocho.com',    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lh9q', 1, true),
 ('Jefe Almacen',       'jefe@mapocho.com',     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lh9q', 2, true),
@@ -41,18 +38,15 @@ WHERE email = 'auditor@mapocho.com';
 -- Verificar que quedó bien
 SELECT email, LENGTH(password) as largo FROM usuarios;
 
--- =============================================
 -- TABLA: proveedores
--- =============================================
+
 INSERT INTO proveedores (nombre, ruc, telefono, activo) VALUES
 ('Proveedor Repsol',  '20123456781', '987654321', true),
 ('Proveedor Abastible','20123456782', '987654322', true),
 ('Proveedor Lipigas', '20123456783', '987654323', true);
 
--- =============================================
 -- TABLA: cilindros
 -- Un registro por tipo+estado = stock agrupado
--- =============================================
 INSERT INTO cilindros (tipo, estado, cantidad) VALUES
 -- Cilindros 5kg
 ('KG_5',  'LLENO',  40),
@@ -70,9 +64,8 @@ INSERT INTO cilindros (tipo, estado, cantidad) VALUES
 ('KG_15', 'VENDIDO', 2),
 ('KG_15', 'VIEJO',   1);
 
--- =============================================
+
 -- TABLA: movimientos (datos de ejemplo)
--- =============================================
 INSERT INTO movimientos (tipo, id_cilindro, cantidad, kg_por_unidad, id_proveedor, id_usuario, fecha_hora, observacion) VALUES
 -- Entradas desde proveedor (id_cilindro = llenos)
 ('ENTRADA', 1,  20, 5.0,  1, 1, '2026-06-01 08:00:00', 'Ingreso inicial cilindros 5kg'),
