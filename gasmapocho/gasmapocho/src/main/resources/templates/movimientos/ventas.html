@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::title}, ~{::section})}">
+<head><title>Ventas / Salidas</title></head>
+<body>
+<section>
+    <div class="mb-4">
+        <h4 class="fw-bold mb-1">Ventas / Salidas</h4>
+        <p class="text-muted mb-0">Registra salidas y devoluciones de cilindros</p>
+    </div>
+
+    <div th:if="${exito}" class="alert alert-success" th:text="${exito}"></div>
+
+    <div class="row g-4">
+        <!-- Formulario -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="fw-semibold mb-3">Registrar Movimiento</h6>
+                    <form th:action="@{/movimientos/ventas/registrar}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}"
+                               th:value="${_csrf.token}">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Cilindro</label>
+                            <select name="idCilindro" class="form-select" required>
+                                <option value="">-- Seleccionar --</option>
+                                <option th:each="c : ${cilindros}"
+                                        th:value="${c.idCilindro}"
+                                        th:text="${c.tipo.name().replace('KG_','') + ' kg - ' + c.estado}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Tipo</label>
+                            <select name="tipo" class="form-select" required>
+                                <option value="SALIDA">SALIDA (Venta)</option>
+                                <option value="DEVOLUCION">DEVOLUCION</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Cantidad</label>
+                            <input type="number" name="cantidad"
+                                   class="form-control" min="1" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Observacion</label>
+                            <input type="text" name="observacion" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Registrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de movimientos -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0 table-sm">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Cilindro</th>
+                            <th class="text-center">Cantidad</th>
+                            <th>Usuario</th>
+                            <th>Observacion</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="m : ${movimientos}">
+                            <td th:text="${#temporals.format(m.fechaHora,'dd/MM/yyyy HH:mm')}"></td>
+                            <td>
+                                    <span th:text="${m.tipo}"
+                                          th:class="${m.tipo.name() == 'SALIDA'} ? 'badge bg-danger' :
+                                                    (${m.tipo.name() == 'ENTRADA'} ? 'badge bg-success' :
+                                                    'badge bg-warning text-dark')">
+                                    </span>
+                            </td>
+                            <td th:text="${m.cilindro.tipo.name().replace('KG_','') + ' kg'}"></td>
+                            <td class="text-center" th:text="${m.cantidad}"></td>
+                            <td th:text="${m.usuario.nombre}"></td>
+                            <td th:text="${m.observacion}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

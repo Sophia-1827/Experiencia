@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::title}, ~{::section})}">
+<head><title>Reportes PDF</title></head>
+<body>
+<section>
+    <div class="mb-4">
+        <h4 class="fw-bold mb-1">Reportes PDF</h4>
+        <p class="text-muted mb-0">Descarga reportes del sistema</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center p-4">
+                    <div class="fs-1 mb-3">📦</div>
+                    <h5 class="fw-semibold">Inventario de Cilindros</h5>
+                    <p class="text-muted small mb-3">
+                        Stock actual por tipo y estado.
+                        Total: <span th:text="${totalCilindros}">0</span> registros.
+                    </p>
+                    <a th:href="@{/reportes/inventario}"
+                       class="btn btn-danger w-100">
+                        Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center p-4">
+                    <div class="fs-1 mb-3">📋</div>
+                    <h5 class="fw-semibold">Ultimos Movimientos</h5>
+                    <p class="text-muted small mb-3">
+                        Entradas, salidas y devoluciones recientes.
+                        Total: <span th:text="${totalMovimientos}">0</span> registros.
+                    </p>
+                    <a th:href="@{/reportes/movimientos}"
+                       class="btn btn-danger w-100">
+                        Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::title}, ~{::section})}">
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+<section>
+  <div class="mb-4">
+    <h4 class="fw-bold mb-1">Dashboard</h4>
+    <p class="text-muted mb-0">Resumen general del inventario</p>
+  </div>
+
+  <!-- Tarjetas de stock -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <div class="card stat-card lleno p-3">
+        <div class="text-muted small">Cilindros Llenos</div>
+        <div class="fs-2 fw-bold text-success" th:text="${totalLlenos}">0</div>
+        <div class="text-muted small">Total en stock</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card stat-card vacio p-3">
+        <div class="text-muted small">Cilindros Vacíos</div>
+        <div class="fs-2 fw-bold text-danger" th:text="${totalVacios}">0</div>
+        <div class="text-muted small">Pendientes recarga</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card stat-card vendido p-3">
+        <div class="text-muted small">Vendidos</div>
+        <div class="fs-2 fw-bold text-primary" th:text="${totalVendidos}">0</div>
+        <div class="text-muted small">Este período</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card stat-card viejo p-3">
+        <div class="text-muted small">Cilindros Viejos</div>
+        <div class="fs-2 fw-bold text-secondary" th:text="${totalViejos}">0</div>
+        <div class="text-muted small">Para dar de baja</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla resumen por tipo -->
+  <div class="card">
+    <div class="card-body">
+      <h6 class="fw-semibold mb-3">Stock por tipo de cilindro</h6>
+      <table class="table table-hover table-sm">
+        <thead class="table-light">
+        <tr>
+          <th>Tipo</th>
+          <th class="text-center text-success">Llenos</th>
+          <th class="text-center text-danger">Vacíos</th>
+          <th class="text-center text-primary">Vendidos</th>
+          <th class="text-center text-secondary">Viejos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><span class="badge bg-light text-dark">5 kg</span></td>
+          <td class="text-center" th:text="${kg_5_lleno}">0</td>
+          <td class="text-center" th:text="${kg_5_vacio}">0</td>
+          <td class="text-center" th:text="${kg_5_vendido}">0</td>
+          <td class="text-center" th:text="${kg_5_viejo}">0</td>
+        </tr>
+        <tr>
+          <td><span class="badge bg-light text-dark">11 kg</span></td>
+          <td class="text-center" th:text="${kg_11_lleno}">0</td>
+          <td class="text-center" th:text="${kg_11_vacio}">0</td>
+          <td class="text-center" th:text="${kg_11_vendido}">0</td>
+          <td class="text-center" th:text="${kg_11_viejo}">0</td>
+        </tr>
+        <tr>
+          <td><span class="badge bg-light text-dark">15 kg</span></td>
+          <td class="text-center" th:text="${kg_15_lleno}">0</td>
+          <td class="text-center" th:text="${kg_15_vacio}">0</td>
+          <td class="text-center" th:text="${kg_15_vendido}">0</td>
+          <td class="text-center" th:text="${kg_15_viejo}">0</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</body>
+</html>
