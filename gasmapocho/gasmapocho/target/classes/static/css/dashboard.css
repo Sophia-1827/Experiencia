@@ -1,0 +1,148 @@
+body {
+    background: #f4f6f9;
+}
+
+/* Tarjetas superiores */
+
+.stat-card {
+    border: none;
+    border-left: 5px solid;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    transition: all .3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 18px rgba(0,0,0,.12);
+}
+
+/* Cards generales */
+
+#main-content .dashboard-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    height: 100% !important;
+}
+
+#main-content .dashboard-card .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100% !important;
+}
+
+#main-content .dashboard-card .card-body h6 {
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+}
+
+/* Contenedor de gráficos */
+
+.chart-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Actividad Reciente */
+
+.list-group-item {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.list-group-item i {
+    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icono-ingreso {
+    color: #198754;
+    background: rgba(25, 135, 84, 0.15);
+}
+
+.icono-venta {
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.15);
+}
+
+.icono-viejo {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.15);
+}
+
+.icono-usuario {
+    color: #6f42c1;
+    background: rgba(111, 66, 193, 0.15);
+}
+
+/* Tabla */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background: #f8f9fa;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.badge-tabla {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.badge-lleno {
+    color: #198754;
+    background: rgba(25, 135, 84, 0.15);
+}
+
+.badge-vacio {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.15);
+}
+
+.badge-vendido {
+    color: #0d6efd;
+    background: rgba(13, 110, 253, 0.15);
+}
+
+.badge-viejo {
+    color: #6c757d;
+    background: rgba(108, 117, 125, 0.15);
+}
+/* Actividad */
+
+.list-group-item {
+    border: none;
+    padding: 12px;
+}
+
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .chart-container {
+        min-height: 220px;
+    }
+}
