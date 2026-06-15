@@ -24,22 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     {
                         label: "Llenos",
                         data: stockLlenos,
-                        backgroundColor: "#198754"
+                        backgroundColor: "#198754",
+                        borderRadius: 4,
+                        maxBarThickness: 40
                     },
                     {
                         label: "Vacíos",
                         data: stockVacios,
-                        backgroundColor: "#dc3545"
+                        backgroundColor: "#dc3545",
+                        borderRadius: 4,
+                        maxBarThickness: 40
                     },
                     {
                         label: "Vendidos",
                         data: stockVendidos,
-                        backgroundColor: "#0d6efd"
+                        backgroundColor: "#0d6efd",
+                        borderRadius: 4,
+                        maxBarThickness: 40
                     },
                     {
                         label: "Viejos",
                         data: stockViejos,
-                        backgroundColor: "#6c757d"
+                        backgroundColor: "#6c757d",
+                        borderRadius: 4,
+                        maxBarThickness: 40
                     }
                 ]
             },
@@ -54,25 +62,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        grid: { color: "#eef0f3" },
+                        border: { display: false },
+                        ticks: { color: "#69707d" }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: "#69707d" }
                     }
                 },
 
                 plugins: {
 
                     legend: {
-                        position: "top"
+                        position: "top",
+                        labels: { usePointStyle: true, boxWidth: 8, color: "#69707d" }
                     },
 
                     datalabels: {
                         anchor: "end",
                         align: "top",
 
-                        color: "#000",
+                        color: "#69707d",
 
                         font: {
-                            weight: "bold",
-                            size: 12
+                            weight: "600",
+                            size: 11
                         },
 
                         formatter: function(value) {
@@ -121,7 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         "#6c757d"
                     ],
 
-                    borderWidth: 2
+                    borderWidth: 2,
+                    borderColor: "#ffffff",
+                    spacing: 2
                 }]
             },
 
@@ -133,10 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 maintainAspectRatio: false,
 
+                cutout: "62%",
+
                 plugins: {
 
                     legend: {
-                        position: "top"
+                        position: "top",
+                        labels: { usePointStyle: true, boxWidth: 8, color: "#69707d" }
                     },
 
                     datalabels: {

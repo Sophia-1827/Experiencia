@@ -9,11 +9,9 @@
 
 <section class="p-4">
 
-    <div class="mb-4">
-        <h4 class="fw-bold">Dashboard</h4>
-        <p class="text-muted">
-            Resumen general del inventario
-        </p>
+    <div class="page-head">
+        <h4>Dashboard</h4>
+        <p>Resumen general del inventario</p>
     </div>
 
     <!-- Variables Thymeleaf -->
@@ -50,73 +48,51 @@
 
     </script>
 
-    <!-- Tarjetas -->
-    <div class="row g-3 mb-4">
-
-        <div class="col-md-3">
-            <div class="card stat-card border-success">
-                <div class="card-body">
-                    <small>CILINDROS LLENOS</small>
-                    <h2 class="text-success"
-                        th:text="${totalLlenos}">0</h2>
-                    <small>Total en stock</small>
-                </div>
-            </div>
+    <!-- Metricas -->
+    <div class="metric-bar mb-4">
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-green"></span>Llenos</div>
+            <div class="metric-value" th:text="${totalLlenos}">0</div>
+            <div class="metric-sub">Total en stock</div>
         </div>
-
-        <div class="col-md-3">
-            <div class="card stat-card border-danger">
-                <div class="card-body">
-                    <small>CILINDROS VACÍOS</small>
-                    <h2 class="text-danger"
-                        th:text="${totalVacios}">0</h2>
-                    <small>Pendientes recarga</small>
-                </div>
-            </div>
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-red"></span>Vacíos</div>
+            <div class="metric-value" th:text="${totalVacios}">0</div>
+            <div class="metric-sub">Pendientes de recarga</div>
         </div>
-
-        <div class="col-md-3">
-            <div class="card stat-card border-primary">
-                <div class="card-body">
-                    <small>VENDIDOS</small>
-                    <h2 class="text-primary"
-                        th:text="${totalVendidos}">0</h2>
-                    <small>Este período</small>
-                </div>
-            </div>
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-blue"></span>Vendidos</div>
+            <div class="metric-value" th:text="${totalVendidos}">0</div>
+            <div class="metric-sub">Este período</div>
         </div>
-
-        <div class="col-md-3">
-            <div class="card stat-card border-secondary">
-                <div class="card-body">
-                    <small>CILINDROS VIEJOS</small>
-                    <h2 class="text-secondary"
-                        th:text="${totalViejos}">0</h2>
-                    <small>Para dar de baja</small>
-                </div>
-            </div>
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-gray"></span>Viejos</div>
+            <div class="metric-value" th:text="${totalViejos}">0</div>
+            <div class="metric-sub">Para dar de baja</div>
         </div>
-
     </div>
 
-    <!-- Gráficos -->
-    <div class="row g-3 mb-4 align-items-stretch"> <!-- ← g-3 y align-items-stretch -->
-
-        <div class="col-md-8">
+    <!-- Gráfico principal -->
+    <div class="row g-3 mb-4">
+        <div class="col-12">
             <div class="card dashboard-card">
                 <div class="card-body">
-                    <h6>Stock por Tipo</h6>
+                    <h6>Stock por tipo</h6>
                     <div class="chart-container">
                         <canvas id="graficoStock"></canvas>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-4">
+    <!-- Estado general + resumen -->
+    <div class="row g-3 align-items-stretch">
+
+        <div class="col-lg-6">
             <div class="card dashboard-card">
                 <div class="card-body">
-                    <h6>Estado General</h6>
+                    <h6>Estado general</h6>
                     <div class="chart-container">
                         <canvas id="graficoEstado"></canvas>
                     </div>
@@ -124,74 +100,29 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- Tabla + Actividad -->
-    <div class="row g-3 align-items-stretch"> <!-- ← g-3 y align-items-stretch también aquí -->
-
-        <div class="col-md-8">
+        <div class="col-lg-6">
             <div class="card dashboard-card">
                 <div class="card-body">
 
-                    <h6>Stock por Tipo de Cilindro</h6>
-
-                    <table class="table table-hover">
-
-                        <thead>
-                        <tr>
-                            <th>Tipo</th>
-                            <th class="text-success">Llenos</th>
-                            <th class="text-danger">Vacíos</th>
-                            <th class="text-primary">Vendidos</th>
-                            <th class="text-secondary">Viejos</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-
-                        <tr>
-                            <td><strong>5 Kg</strong></td>
-                            <td><span class="badge-tabla badge-lleno" th:text="${kg_5_lleno}"></span></td>
-                            <td><span class="badge-tabla badge-vacio" th:text="${kg_5_vacio}"></span></td>
-                            <td><span class="badge-tabla badge-vendido" th:text="${kg_5_vendido}"></span></td>
-                            <td><span class="badge-tabla badge-viejo" th:text="${kg_5_viejo}"></span></td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>11 Kg</strong></td>
-                            <td><span class="badge-tabla badge-lleno" th:text="${kg_11_lleno}"></span></td>
-                            <td><span class="badge-tabla badge-vacio" th:text="${kg_11_vacio}"></span></td>
-                            <td><span class="badge-tabla badge-vendido" th:text="${kg_11_vendido}"></span></td>
-                            <td><span class="badge-tabla badge-viejo" th:text="${kg_11_viejo}"></span></td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>15 Kg</strong></td>
-                            <td><span class="badge-tabla badge-lleno" th:text="${kg_15_lleno}"></span></td>
-                            <td><span class="badge-tabla badge-vacio" th:text="${kg_15_vacio}"></span></td>
-                            <td><span class="badge-tabla badge-vendido" th:text="${kg_15_vendido}"></span></td>
-                            <td><span class="badge-tabla badge-viejo" th:text="${kg_15_viejo}"></span></td>
-                        </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card dashboard-card">
-                <div class="card-body">
-
-                    <h6>Actividad Reciente</h6>
+                    <h6>Resumen de inventario</h6>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="bi bi-check-lg icono-ingreso"></i>Ingreso de cilindros</li>
-                        <li class="list-group-item"><i class="bi bi-cart icono-venta"></i>Venta realizada</li>
-                        <li class="list-group-item"><i class="bi bi-exclamation-triangle icono-viejo"></i>Cilindro marcado viejo</li>
-                        <li class="list-group-item"><i class="bi bi-person icono-usuario"></i>Usuario agregado</li>
+                        <li class="list-group-item">
+                            <span class="dot dot-green"></span>
+                            <span><strong th:text="${totalLlenos}">0</strong> cilindros llenos en stock</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="dot dot-red"></span>
+                            <span><strong th:text="${totalVacios}">0</strong> vacíos pendientes de recarga</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="dot dot-blue"></span>
+                            <span><strong th:text="${totalVendidos}">0</strong> vendidos en el período</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="dot dot-gray"></span>
+                            <span><strong th:text="${totalViejos}">0</strong> marcados para dar de baja</span>
+                        </li>
                     </ul>
                 </div>
             </div>

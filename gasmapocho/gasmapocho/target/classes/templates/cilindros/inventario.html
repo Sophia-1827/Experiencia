@@ -2,44 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       th:replace="~{layout/base :: layout(~{::title}, ~{::section})}">
-<head><title>Inventario de Cilindros</title></head>
+<head><title>Inventario de cilindros</title></head>
 <body>
 <section class="p-4">
-    <div class="mb-4">
-        <h4 class="fw-bold mb-1">Inventario de Cilindros</h4>
-        <p class="text-muted mb-0">Estado actual del stock por tipo</p>
+    <div class="page-head">
+        <h4>Inventario de cilindros</h4>
+        <p>Estado actual del stock por tipo</p>
     </div>
 
     <div th:if="${exito}" class="alert alert-success" th:text="${exito}"></div>
 
-    <div class="row g-3 mb-4">
-        <div class="col-md-3">
-            <div class="card stat-card lleno p-3">
-                <div class="text-muted small">Llenos</div>
-                <div class="fs-2 fw-bold text-success" th:text="${totalLlenos}">0</div>
-                <div class="text-muted small">Total en stock</div>
-            </div>
+    <div class="metric-bar mb-4">
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-green"></span>Llenos</div>
+            <div class="metric-value" th:text="${totalLlenos}">0</div>
+            <div class="metric-sub">Total en stock</div>
         </div>
-        <div class="col-md-3">
-            <div class="card stat-card vacio p-3">
-                <div class="text-muted small">Vacios</div>
-                <div class="fs-2 fw-bold text-danger" th:text="${totalVacios}">0</div>
-                <div class="text-muted small">Pendientes recarga</div>
-            </div>
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-red"></span>Vacíos</div>
+            <div class="metric-value" th:text="${totalVacios}">0</div>
+            <div class="metric-sub">Pendientes de recarga</div>
         </div>
-        <div class="col-md-3">
-            <div class="card stat-card vendido p-3">
-                <div class="text-muted small">Vendidos</div>
-                <div class="fs-2 fw-bold text-primary" th:text="${totalVendidos}">0</div>
-                <div class="text-muted small">Este periodo</div>
-            </div>
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-blue"></span>Vendidos</div>
+            <div class="metric-value" th:text="${totalVendidos}">0</div>
+            <div class="metric-sub">Este período</div>
         </div>
-        <div class="col-md-3">
-            <div class="card stat-card viejo p-3">
-                <div class="text-muted small">Viejos</div>
-                <div class="fs-2 fw-bold text-secondary" th:text="${totalViejos}">0</div>
-                <div class="text-muted small">Para dar de baja</div>
-            </div>
+        <div class="metric">
+            <div class="metric-label"><span class="dot dot-gray"></span>Viejos</div>
+            <div class="metric-value" th:text="${totalViejos}">0</div>
+            <div class="metric-sub">Para dar de baja</div>
         </div>
     </div>
 
