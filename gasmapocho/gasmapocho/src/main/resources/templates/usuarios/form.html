@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layout/base :: layout(~{::title}, ~{::section})}">
-<head><title>Formulario Usuario</title></head>
+<head><title>Formulario de usuario</title></head>
 <body>
 <section class="p-4">
     <div class="mb-4">
         <h4 class="fw-bold mb-1"
-            th:text="${usuario.idUsuario != null} ? 'Editar Usuario' : 'Nuevo Usuario'">
+            th:text="${usuario.idUsuario != null} ? 'Editar usuario' : 'Nuevo usuario'">
         </h4>
     </div>
 

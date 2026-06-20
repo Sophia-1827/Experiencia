@@ -16,7 +16,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="fw-semibold mb-3">Registrar Movimiento</h6>
+                    <h6 class="fw-semibold mb-3">Registrar movimiento</h6>
                     <form th:action="@{/movimientos/ventas/registrar}" method="post">
                         <input type="hidden" th:name="${_csrf.parameterName}"
                                th:value="${_csrf.token}">
@@ -35,8 +35,8 @@
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Tipo</label>
                             <select name="tipo" class="form-select" required>
-                                <option value="SALIDA">SALIDA (Venta)</option>
-                                <option value="DEVOLUCION">DEVOLUCION</option>
+                                <option value="SALIDA">Salida (venta)</option>
+                                <option value="DEVOLUCION">Devolución</option>
                             </select>
                         </div>
 
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-semibold">Observacion</label>
+                            <label class="form-label fw-semibold">Observación</label>
                             <input type="text" name="observacion" class="form-control">
                         </div>
 
@@ -71,7 +71,7 @@
                             <th>Cilindro</th>
                             <th class="text-center">Cantidad</th>
                             <th>Usuario</th>
-                            <th>Observacion</th>
+                            <th>Observación</th>
                         </tr>
                         </thead>
                         <tbody>
