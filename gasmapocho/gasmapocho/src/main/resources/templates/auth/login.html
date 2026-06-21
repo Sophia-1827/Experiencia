@@ -11,71 +11,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/modern-ui.css}">
     <style>
-        html, body {
-            height: 100%;
-        }
-        body {
-            margin: 0;
-            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-        }
+        html, body { height: 100%; }
+        body { margin: 0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 
-        .login-screen {
-            display: flex;
-            min-height: 100vh;
-        }
+        .login-screen { display: flex; min-height: 100vh; }
 
-        /* --- Columna izquierda: formulario --- */
         .login-pane {
-            flex: 1 1 55%;
+            flex: 1 1 38%;
+            max-width: 480px;
             display: flex;
-            align-items: center;
+            c
             justify-content: center;
             background-color: var(--surface);
             padding: 2.5rem;
         }
 
-        .login-form-wrap {
-            width: 100%;
-            max-width: 420px;
-        }
+        .login-form-wrap { width: 100%; max-width: 420px; }
 
-        .login-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin-bottom: 2.5rem;
-        }
-        .login-brand img {
-            height: 38px;
-            width: auto;
-        }
-        .login-brand span {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text);
-        }
+        .login-brand { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 2.5rem; }
+        .login-brand img { height: 38px; width: auto; content: center}
+        .login-brand span { font-weight: 700; font-size: 1.1rem; color: var(--text); }
 
-        .login-form-wrap h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.35rem;
-        }
-        .login-form-wrap .subtitle {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 2rem;
-        }
+        .login-form-wrap h1 { font-size: 1.6rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+        .login-form-wrap .subtitle { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 2rem; }
 
-        .login-form-wrap .form-label {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--text);
-        }
-        .login-form-wrap .form-control {
-            padding: 0.65rem 0.85rem;
-            font-size: 0.95rem;
-        }
+        .login-form-wrap .form-label { font-weight: 600; font-size: 0.85rem; color: var(--text); }
+        .login-form-wrap .form-control { padding: 0.65rem 0.85rem; font-size: 0.95rem; }
 
         .login-form-wrap .btn-primary {
             background-color: var(--navy);
@@ -89,9 +50,8 @@
             border-color: var(--navy-hover);
         }
 
-        /* --- Columna derecha: imagen --- */
         .login-visual {
-            flex: 1 1 45%;
+            flex: 1 1 62%;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -103,6 +63,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
         .login-visual::after {
             content: "";
@@ -110,23 +71,9 @@
             inset: 0;
             background: linear-gradient(180deg, rgba(26,60,94,0.05) 0%, rgba(26,60,94,0.55) 100%);
         }
-        .login-visual .login-visual-caption {
-            position: relative;
-            z-index: 1;
-            color: #fff;
-            padding: 2.5rem;
-        }
-        .login-visual .login-visual-caption h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .login-visual .login-visual-caption p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            margin: 0;
-            max-width: 380px;
-        }
+        .login-visual .login-visual-caption { position: relative; z-index: 1; color: #fff; padding: 2.5rem; }
+        .login-visual .login-visual-caption h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .login-visual .login-visual-caption p { font-size: 0.95rem; opacity: 0.9; margin: 0; max-width: 380px; }
 
         @media (max-width: 860px) {
             .login-visual { display: none; }
@@ -143,7 +90,6 @@
 
             <div class="login-brand">
                 <img th:src="@{/img/gasco.png}" alt="Gasco">
-
             </div>
 
             <h1>Inicia sesión</h1>
