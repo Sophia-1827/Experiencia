@@ -63,7 +63,9 @@
         <span class="fw-semibold text-secondary" th:replace="${title}">Pagina</span>
         <div class="d-flex align-items-center gap-3">
             <span class="text-muted small" sec:authentication="name">usuario</span>
-            <a th:href="@{/logout}" class="btn btn-sm btn-outline-danger">Salir</a>
+            <form th:action="@{/logout}" method="post" class="m-0 d-inline">
+                 <button type="submit" class="btn btn-sm btn-outline-danger">Salir</button>
+            </form>
         </div>
     </div>
     <div class="page-content" th:replace="${content}">

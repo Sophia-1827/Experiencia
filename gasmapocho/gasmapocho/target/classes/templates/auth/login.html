@@ -11,42 +11,143 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/modern-ui.css}">
     <style>
+        html, body {
+            height: 100%;
+        }
         body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .login-screen {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Columna izquierda: formulario --- */
+        .login-pane {
+            flex: 1 1 55%;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 1rem;
+            background-color: var(--surface);
+            padding: 2.5rem;
         }
-        .login-card {
+
+        .login-form-wrap {
             width: 100%;
+            max-width: 420px;
+        }
+
+        .login-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 2.5rem;
+        }
+        .login-brand img {
+            height: 38px;
+            width: auto;
+        }
+        .login-brand span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .login-form-wrap h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+        }
+        .login-form-wrap .subtitle {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 2rem;
+        }
+
+        .login-form-wrap .form-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+        .login-form-wrap .form-control {
+            padding: 0.65rem 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        .login-form-wrap .btn-primary {
+            background-color: var(--navy);
+            border-color: var(--navy);
+            padding: 0.7rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .login-form-wrap .btn-primary:hover {
+            background-color: var(--navy-hover);
+            border-color: var(--navy-hover);
+        }
+
+        /* --- Columna derecha: imagen --- */
+        .login-visual {
+            flex: 1 1 45%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+        .login-visual img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .login-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(26,60,94,0.05) 0%, rgba(26,60,94,0.55) 100%);
+        }
+        .login-visual .login-visual-caption {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 2.5rem;
+        }
+        .login-visual .login-visual-caption h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .login-visual .login-visual-caption p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin: 0;
             max-width: 380px;
         }
-        .login-brand {
-            text-align: center;
-            margin-bottom: 1.75rem;
-        }
-        .login-brand .login-logo {
-            height: 52px;
-            width: auto;
-            margin-bottom: 0.9rem;
-        }
-        .login-brand p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin: 0;
+
+        @media (max-width: 860px) {
+            .login-visual { display: none; }
+            .login-pane { flex: 1 1 100%; }
         }
     </style>
 </head>
 <body>
-<div class="login-card">
-    <div class="login-brand">
-        <img th:src="@{/img/gasco.png}" alt="Gasco" class="login-logo">
-        <p>Sistema de gestión de inventario</p>
-    </div>
 
-    <div class="card">
-        <div class="card-body p-4">
+<div class="login-screen">
+
+    <div class="login-pane">
+        <div class="login-form-wrap">
+
+            <div class="login-brand">
+                <img th:src="@{/img/gasco.png}" alt="Gasco">
+
+            </div>
+
+            <h1>Inicia sesión</h1>
+            <p class="subtitle">Sistema de gestión de inventario de cilindros</p>
 
             <div th:if="${param.error}" class="alert alert-danger mb-3" role="alert">
                 Email o contraseña incorrectos.
@@ -79,8 +180,19 @@
                     Ingresar
                 </button>
             </form>
+
         </div>
     </div>
+
+    <div class="login-visual">
+        <img th:src="@{/img/login.png}" alt="Gasco - distribución de gas licuado">
+        <div class="login-visual-caption">
+            <h2>Gas Mapocho</h2>
+            <p>Control y trazabilidad de inventario, ventas y proveedores en un solo lugar.</p>
+        </div>
+    </div>
+
 </div>
+
 </body>
 </html>
